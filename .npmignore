@@ -1,0 +1,7 @@
+node_modules
+src
+tsconfig.json
+
+.github
+yarn.error.log
+__teste__

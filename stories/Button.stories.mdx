@@ -1,0 +1,137 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+
+import { Button } from '../src';
+
+<Meta 
+    title="Components/Button"
+    component={Button}  
+    argTypes={{
+        color: {
+            control: {
+                type: "color"
+            },
+            table: {
+                category: 'Color'
+            }
+        },
+        onColor:{
+            control: {
+                type: "color"
+            },
+            table: {
+                category: 'Color'
+            }
+        },
+        styleType:{
+            control: {
+                type: "select"
+            },
+            table: {
+                category: 'Style'
+            }
+        },
+        elevated: {
+            control: {
+                type: "boolean"
+            },
+            table: {
+                category: 'Style'
+            }
+        },
+        children: {
+            table: {
+                disable: true
+            }
+        }
+    }}
+/>
+
+# Button
+
+
+## Default button
+<Canvas>
+    <Story
+        name="Default"
+        parameters={{
+            layout: 'centered',
+        }}
+        args={{
+            color: '#ffc864',
+            onColor: '#2a2a2a',
+            styleType: 'default',
+            elevated: false,
+            children: 'Text',
+        }}
+    >
+        {
+            (args) => <Button {...args}>{args.children}</Button>
+        }
+        
+    </Story>
+</Canvas>
+
+
+## Outlined button
+<p>Ao definir como <code>styleType="text"</code>, o <code>onColor</code> passa a ser a cor do texto e da borda, quando é feito o efeito de hover, o <code>onColor</code> volta a ser o background do botão e o <code>color</code> passa a ser a cor do texto</p>
+
+<Canvas>
+    <Story
+        name="Outlined"
+        parameters={{
+            layout: 'centered',
+        }}
+        args={{
+            color: '#ffc864',
+            onColor: '#2a2a2a',
+            styleType: 'outline',
+            elevated: false,
+            children: 'Text'
+        }}
+    >
+        {(args) => <Button {...args}>{args.children}</Button>}
+    </Story>
+</Canvas>
+
+## Text button
+<p>Ao definir como <code>styleType="text"</code>, o <code>onColor</code> passa a ser a cor do texto, quando é feito o efeito de hover, o <code>onColor</code> volta a ser o background do botão e o <code>color</code> passa a ser a cor do texto</p>
+
+<Canvas>
+    <Story
+        name="Text"
+        parameters={{
+            layout: 'centered',
+        }}
+        args={{
+            color: '#ffc864',
+            onColor: '#2a2a2a',
+            styleType: 'text',
+            elevated: false,
+            children: 'Text'
+        }}
+    >
+        {(args) => <Button {...args}>{args.children}</Button>}
+    </Story>
+</Canvas>
+
+## Elevated buttons
+
+<Canvas>
+    <Story
+        name="Elevated"
+        parameters={{
+            layout: 'centered',
+        }}
+        args={{
+            color: '#ffc864',
+            onColor: '#2a2a2a',
+            styleType: 'default',
+            children: 'Text',
+            elevated: true
+        }}
+    >
+        {(args) => <Button className="blas" {...args}>{args.children}</Button>}
+    </Story>
+</Canvas>
+
+<ArgsTable of={Button} />
